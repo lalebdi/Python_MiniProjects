@@ -57,12 +57,6 @@ class Person: # hp : Health Points, mp : Magic Points, atk : Attack, atkl: Low A
     def reduce_mp(self, cost):
         self.mp -= cost
 
-    def get_spell_name(self, i):
-        return self.magic[i]["name"]
-
-    def get_spell_mp_cost(self, i):
-        return self.magic[i]["cost"]
-
     def choose_action(self):
         i = 1
         print(Bcolors.OKBLUE + Bcolors.BOLD + "Actions" + Bcolors.ENDC)
