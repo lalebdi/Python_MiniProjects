@@ -26,6 +26,17 @@ class Person: # hp : Health Points, mp : Magic Points, atk : Attack, atkl: Low A
     def generate_damage(self):
         return random.randrange(self.atkl, self.atkh) # thats going to generate numbers for the attacks to be random 
 
+    def generate_spell_damage(self, i):
+        mgl = self.magic[i]["dmg"] -5
+        mgh = self.magic[i]["dmg"] +5
+        return random.randrange(mgl, mgh)
+
+    def take_damage(self, dmg):
+        self.hp -= dmg
+        if self.hp < 0:
+            self.hp = 0
+        return self.hp
+
 
 
 
