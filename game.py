@@ -28,3 +28,5 @@ class Person: # hp : Health Points, mp : Magic Points, atk : Attack, atkl: Low A
 
 
 
+
+
