@@ -29,4 +29,4 @@ while running:
     enemy_dmg = enemy.generate_damage()
     player.take_damage(enemy_dmg)
     print("Enemy attacks for", enemy_dmg, "Player HP", player.get_hp())
-    player
+    
