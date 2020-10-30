@@ -6,7 +6,7 @@ class Bcolors:
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
     FAIL = '\033[91m'
-    ENDC = '\033[0m'
+    ENDC = '\033[0m' # this is important to end any color formatting 
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
@@ -37,10 +37,15 @@ class Person: # hp : Health Points, mp : Magic Points, atk : Attack, atkl: Low A
             self.hp = 0
         return self.hp
 
+    def heal(self, dmg):
+        self.hp += dmg
+        if self.hp > self.maxhp:
+            self.hp = self.maxhp
+
     def get_hp(self):
         return self.hp
 
-    def get_max(self):
+    def get_max_hp(self):
         return self.maxhp
 
     def get_mp(self):
@@ -60,14 +65,14 @@ class Person: # hp : Health Points, mp : Magic Points, atk : Attack, atkl: Low A
 
     def choose_action(self):
         i = 1
-        print("Actions")
+        print(Bcolors.OKBLUE + Bcolors.BOLD + "Actions" + Bcolors.ENDC)
         for item in self.actions:
             print(str(i) + ":", item)
             i += 1
 
     def choose_magic(self):
         i = 1
-        print("Magic")
+        print(Bcolors.OKBLUE + Bcolors.BOLD + "Magic" + Bcolors.ENDC)
         for spell in self.magic:
             print(str(i) + ":", spell["name"], "(cost: ", str(spell["mp"]) + ")")
             i += 1
