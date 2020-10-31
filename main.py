@@ -5,7 +5,7 @@ from inventory import Item
 print("\n\n")
 print("Name                 HP                                   MP")
 print("                     _________________________            __________ ")
-print("Valos:  460/460      |                        |   65/65   |         |")
+print(Bcolors.BOLD + "Valos:  "+ "460/460      |" + Bcolors.OKGREEN + "████████                " + Bcolors.ENDC + Bcolors.BOLD + "|   " + "65/65   |" + Bcolors.OKBLUE + "█████████" + Bcolors.ENDC + "|")
 
 print("                     _________________________            __________ ")
 print("Valos:  460/460      |                        |   65/65   |         |")
