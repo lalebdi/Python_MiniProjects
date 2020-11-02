@@ -20,3 +20,11 @@ inserted = users.insert_many(user4)
 
 user_id
 
+import datetime
+
+current_date = datetime.datetime.now()
+print(current_date)
+
+old_date = datetime.datetime(2009, 8, 11)
+
+uid = users.insert_one({"username" : "Zeno", "date" : current_date})
