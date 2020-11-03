@@ -30,6 +30,7 @@ $(document).on("submit", "#login-form", function(e){
                     alert("could not login 🤯");
                 }else{
                     console.log("Logged in as: ", res);
+                    window.location.href = "/"; // -> redirects back to the home page
 
                 }
     }
