@@ -26,7 +26,7 @@ render = web.template.render("Views/Templates", base="MainLayout", globals={'ses
 
 class Home:
     def GET(self):
-        data = type('obj', (object,), {"username": "qazi1", "password": "doubledoor"})
+        data = type('obj', (object,), {"username": "Bella", "password": "Bella"})
 
         login = LoginModel.LoginModel()
         isCorrect = login.check_user(data)
@@ -34,7 +34,10 @@ class Home:
         if isCorrect:
             session_data["user"] = isCorrect
 
-        return render.Home()
+        post_model = Posts.Posts()
+        posts = post_model.get_all_posts()
+
+        return render.Home(posts)
 
 
 class Register:
