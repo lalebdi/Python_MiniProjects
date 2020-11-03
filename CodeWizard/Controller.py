@@ -1,4 +1,5 @@
 import web
+from Models import RegisterModel
 
 urls = (
     '/', 'Home',
@@ -25,6 +26,9 @@ class Register:
 class PostRegistration:
     def POST(self):
         data = web.input()
+
+        reg_model = RegisterModel.RegisterModal()
+        reg_model.insert_user(data)
         return data.username
 
 
