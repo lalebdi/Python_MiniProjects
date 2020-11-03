@@ -1,9 +1,9 @@
 import pymongo
 from pymongo import MongoClient
+import bcrypt
 
 
-class RegisterModal:
-
+class RegisterModelCls:
     def __init__(self):
         self.client = MongoClient()
         self.db = self.client.codewizard
@@ -11,5 +11,13 @@ class RegisterModal:
 
     def insert_user(self, data):
 
-        id = self.Users.insert({"username": data.username, "name": data.name, "password": data.password, "email": data.email})
-        print("The id is: ", id)
+        hashed = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt())
+
+        id = self.Users.insert({"username": data.username,"name": data.name, "password": hashed, "email": data.email })
+        print("Uid is: ", id)
+        myuser = self.Users.find_one({"username":data.username})
+
+        if bcrypt.checkpw("avocado1".encode(), myuser["password"]):
+            print("this matches")
+
+
