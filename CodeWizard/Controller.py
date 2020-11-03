@@ -16,7 +16,7 @@ urls = (
 
 app = web.application(urls, globals())
 # instatiating a session below
-session = web.session.Session(app, web.session.DiskStore("sessions"), initializer={'user': 'none'})
+session = web.session.Session(app, web.session.DiskStore("sessions"), initializer={'user': None})
 session_data = session._initializer
 #  The session variable is always going to exist in the routes
 render = web.template.render("Views/Templates", base="MainLayout", globals={'session': session_data, 'current_user': session_data["user"]})
@@ -61,6 +61,8 @@ class CheckLogin:
 
 class Logout:
     def GET(self):
+        session['user'] = None
+        session_data['user'] = None
         session.kill()
         return "success"
 
