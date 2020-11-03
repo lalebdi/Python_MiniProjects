@@ -36,4 +36,19 @@ $(document).on("submit", "#login-form", function(e){
     }
     })
 })
+$(document).on('click', '#logout-link', function(e){
+    e.preventDefault();
+    $.ajax({
+        url: '/logout',
+        type: 'GET',
+        success: function(res){
+            if(res == 'success'){
+                window.location.href = '/login';
+            }else{
+                alert("Hmm, something went wrong 🧐")
+            }
+        }
+    })
+})
+
 })
