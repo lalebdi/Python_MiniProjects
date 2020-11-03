@@ -26,8 +26,7 @@ class Register:
 class PostRegistration:
     def POST(self):
         data = web.input()
-
-        reg_model = RegisterModel.RegisterModal()
+        reg_model = RegisterModel.RegisterModelCls()
         reg_model.insert_user(data)
         return data.username
 
