@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+*{
+  box-sizing: border-box;
+  }
+
+/* create right column */
+.right_column {
+  float: left;
+  width: 80%;
+  padding: 30px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+/* create left columm */
+.left_column {
+  float: left;
+  width: 20%;
+  padding: 40px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
 <body>
-$END$
+
+<div class="row">
+  <div class="left_column" >
+    {% for post in posts %}
+      <div>
+          <div class="summary-title"><a href="/post/{{ post.slug }}">{{ post.title }}</a> </div>
+          <div class="summary">{{ post.summary }}</div>
+      </div>
+      {% endfor %}
+  </div>
+  <div class="right_column" >
+      <div>
+        {% block entry %}
+
+        {% endblock %}
+    </div>
+
+  </div>
+</div>
+
 </body>
-</html>
+
+{% endblock %}
