@@ -1,10 +1,5 @@
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-
-{% load bootstrap3 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
+{% extends 'base.html' %}
+{% block content %}
 <h1>I'm an index page</h1>
 
 {% for post in posts %}
@@ -19,3 +14,5 @@
         <a href="/about/">About</a>
     </h3>
 </div>
+
+{% endblock %}
