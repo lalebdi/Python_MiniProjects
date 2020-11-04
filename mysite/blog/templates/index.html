@@ -1,3 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <h1>I'm an index page</h1>
 
 {% for post in posts %}
@@ -6,3 +13,9 @@
     <p>{{ post.summary }}</p>
 </div>
 {% endfor %}
+
+<div>
+    <h3>
+        <a href="/about/">About</a>
+    </h3>
+</div>
