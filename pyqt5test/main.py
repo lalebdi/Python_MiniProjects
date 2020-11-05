@@ -18,7 +18,11 @@ component.loadUrl(QUrl('main.qml'))
 
 # Create the objects from the QML
 window = component.create()
-window.show()
+if window:
+    window.show()
+else:
+    for error in component.errors():
+        print(error.toString())
 
 sys.exit(app.exec_())
 
