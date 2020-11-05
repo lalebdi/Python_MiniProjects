@@ -12,6 +12,7 @@ class MainWindow(QWidget):
         label = QLabel("Name: ")
         name_input = QLineEdit()
         button = QPushButton("Set Name")
+        button.clicked.connect(self.clickedButton)
 
         h = QHBoxLayout()
         # h.addStretch(1)
@@ -27,6 +28,9 @@ class MainWindow(QWidget):
 
         self.setWindowTitle("Horizontal Layout")
         self.show()
+
+    def clickedButton(self):
+        print("the button clicked")
 
 
 if __name__ == "__main__": # to run the script
