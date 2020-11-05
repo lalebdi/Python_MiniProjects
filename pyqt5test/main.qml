@@ -8,6 +8,7 @@ ApplicationWindow {
     height: 160
     width: 300
     visible: true
+    title: "My Window"
 
     Item {
         id: page
@@ -15,10 +16,10 @@ ApplicationWindow {
         width: parent.width
 
         Rectangle {
-             height: {
+            height: {
                 console.log("I am a comment")
                 return 160
-             }
+            }
               width: 100
               color: "#ff0000"
 
