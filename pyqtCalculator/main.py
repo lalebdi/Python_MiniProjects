@@ -14,12 +14,12 @@ class MainWindow(QWidget):
         button = QPushButton("Set Name")
 
         h = QHBoxLayout()
-        h.addStretch(1)
+        # h.addStretch(1)
         h.addWidget(label)
         h.addWidget(name_input)
 
         v = QVBoxLayout()
-        v.addStretch(1)
+        # v.addStretch(1)
         v.addLayout(h)
         v.addWidget(button)
 
