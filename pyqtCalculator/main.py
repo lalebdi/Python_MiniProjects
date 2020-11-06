@@ -13,6 +13,7 @@ class Application(QWidget):
 
         # Creating a variable named Grid
         grid = QGridLayout()
+        results = QLineEdit()
 
         buttons = ["AC", "C", "CE", "/",
                     7, 8, 9, "*",
@@ -20,8 +21,10 @@ class Application(QWidget):
                     1, 2, 3, "+",
                     0, ".", "="]
 
-        row = 0
+        row = 1
         column = 0
+
+        grid.addWidget(results, 0, 0, 1, 4)
 
         for button in buttons:
             if column > 3:
