@@ -20,6 +20,9 @@ class Button:
         elif value == "√":
             value = float(self.results.text())
             self.results.setText(str(math.sqrt(value)))
+        elif value == "DEL":
+            current_value = self.results.text()
+            self.results.setText(current_value[:-1])
         else:
             current_value = self.results.text()
             new_value = current_value + str(value)
@@ -38,7 +41,7 @@ class Application(QWidget):
         grid = QGridLayout()
         results = QLineEdit()
 
-        buttons = ["AC", "√", "%", "/",
+        buttons = ["AC", "√", "DEL", "/",
                     7, 8, 9, "*",
                     4, 5, 6, "-",
                     1, 2, 3, "+",
