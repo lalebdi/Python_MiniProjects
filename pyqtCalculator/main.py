@@ -20,7 +20,16 @@ class Application(QWidget):
                     1, 2, 3, "+",
                     0, ".", "="]
 
+        row = 0
+        column = 0
 
+        for button in buttons:
+            if column > 3:
+                column = 0
+                row += 1
+            grid.addWidget(QPushButton(str(button)), row, column, 1, 1)
+
+            column += 1
 
         self.setLayout(grid)
         self.show()
