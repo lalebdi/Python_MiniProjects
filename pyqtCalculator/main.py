@@ -14,6 +14,8 @@ class Button:
         if value == "=":
             res = eval(self.results.text())
             self.results.setText(str(res))
+        elif value == "AC":
+            self.results.setText("")
         else:
             current_value = self.results.text()
             new_value = current_value + str(value)
