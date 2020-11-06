@@ -27,7 +27,12 @@ class Application(QWidget):
             if column > 3:
                 column = 0
                 row += 1
-            grid.addWidget(QPushButton(str(button)), row, column, 1, 1)
+
+            if button == 0:
+                grid.addWidget(QPushButton(str(button)), row, column, 1, 2)
+                column += 1
+            else:
+                grid.addWidget(QPushButton(str(button)), row, column, 1, 1)
 
             column += 1
 
