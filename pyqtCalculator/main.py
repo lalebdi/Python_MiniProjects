@@ -3,6 +3,17 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
+class Button:
+    def __init__(self, text, results):
+        self.b = QPushButton(str(text))
+        self.text = text # so we can refrence it later
+        self.results = results
+        self.b.clicked.connect(lambda: self.handleInput(self.text))
+
+    def handleInput(self, value):
+        print("clicked", value)
+
+
 class Application(QWidget):
     def __init__(self):
         super().__init__()
@@ -31,11 +42,13 @@ class Application(QWidget):
                 column = 0
                 row += 1
 
+            buttonObj = Button(button, results)
+
             if button == 0:
-                grid.addWidget(QPushButton(str(button)), row, column, 1, 2)
+                grid.addWidget(buttonObj.b, row, column, 1, 2)
                 column += 1
             else:
-                grid.addWidget(QPushButton(str(button)), row, column, 1, 1)
+                grid.addWidget(buttonObj.b, row, column, 1, 1)
 
             column += 1
 
