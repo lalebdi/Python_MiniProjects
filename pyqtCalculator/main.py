@@ -11,6 +11,9 @@ class Button:
         self.b.clicked.connect(lambda: self.handleInput(self.text))
 
     def handleInput(self, value):
+        current_value = self.results.text()
+        new_value = current_value + str(value)
+        self.results.setText(new_value)
         print("clicked", value)
 
 
@@ -32,10 +35,10 @@ class Application(QWidget):
                     1, 2, 3, "+",
                     0, ".", "="]
 
+        grid.addWidget(results, 0, 0, 1, 4)
+
         row = 1
         column = 0
-
-        grid.addWidget(results, 0, 0, 1, 4)
 
         for button in buttons:
             if column > 3:
