@@ -34,7 +34,9 @@ class MainWindow(QWidget):
 
     def alterName(self):
         inputted_text = self.name_input.text()
-        print(inputted_text)
+        our_string = "You've entered" + inputted_text
+        self.text_label.setText(our_string)
+        self.setWindowTitle((inputted_text + "'s Window"))
 
 
 
