@@ -1,4 +1,5 @@
 import sys
+import math
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -16,6 +17,9 @@ class Button:
             self.results.setText(str(res))
         elif value == "AC":
             self.results.setText("")
+        elif value == "√":
+            value = float(self.results.text())
+            self.results.setText(str(math.sqrt(value)))
         else:
             current_value = self.results.text()
             new_value = current_value + str(value)
@@ -34,7 +38,7 @@ class Application(QWidget):
         grid = QGridLayout()
         results = QLineEdit()
 
-        buttons = ["AC", "C", "CE", "/",
+        buttons = ["AC", "√", "%", "/",
                     7, 8, 9, "*",
                     4, 5, 6, "-",
                     1, 2, 3, "+",
