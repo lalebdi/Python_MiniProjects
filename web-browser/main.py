@@ -2,7 +2,7 @@ import sys
 import os
 import json
 
-from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QTabBar, QFrame, QStackedLayout)
+from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QLineEdit, QTabBar, QFrame, QStackedLayout, QTabWidget)
 
 from PyQt5.QtGui import QIcon, QWindow, QImage
 from PyQt5.QtCore import *
@@ -18,10 +18,11 @@ class App(QFrame):
     def CreateApp(self):
         self.layout = QVBoxLayout()
 
-        self.tabbar = QTabBar()
+        # self.tabbar = QTabBar()
+        self.tabbar = QTabWidget()
 
-        self.tabbar.addTab("Tab 1")
-        self.tabbar.addTab("Tab 2")
+        self.tabbar.addTab(QPushButton("Tab 1"), "First Tab")
+        self.tabbar.addTab(QPushButton("Tab 2"), "Tab 2")
 
         self.tabbar.setCurrentIndex(0)
 
@@ -37,4 +38,3 @@ if __name__ == "__main__":
 
     sys.exit(app.exec_())
 
-    
