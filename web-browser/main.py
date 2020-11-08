@@ -26,6 +26,8 @@ class App(QFrame):
 
     def CreateApp(self):
         self.layout = QVBoxLayout()
+        self.layout.setSpacing(0)
+        self.layout.setContentsMargins(0, 0, 0, 0)
 
         # Create Tabs
         self.tabbar = QTabBar(movable = True, tabsClosable = True)
