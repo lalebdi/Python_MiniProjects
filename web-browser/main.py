@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout, QP
 
 from PyQt5.QtGui import QIcon, QWindow, QImage
 from PyQt5.QtCore import *
+from PyQt5.QtWebEngineWidgets import *
 
 
 class AddressBar(QLineEdit):
@@ -33,10 +34,14 @@ class App(QFrame):
         self.tabbar = QTabBar(movable = True, tabsClosable = True)
         self.tabbar.tabCloseRequested.connect(self.CloseTab)
 
-        self.tabbar.addTab("Tab 1")
-        self.tabbar.addTab("Tab 2")
+        # self.tabbar.addTab("Tab 1")
+        # self.tabbar.addTab("Tab 2")
 
         self.tabbar.setCurrentIndex(0)
+
+        # Keep track of the tabs and their content
+        self.tabCount = 0 # <- going to be increased with every new tab and this will also be within the object name
+        self.tabs = [] # <- will contain the tab widgets not the tabs themselves
 
         # Create AddressBar
         self.Toolbar = QWidget()
@@ -45,6 +50,12 @@ class App(QFrame):
         # set the Toolbar layout
         self.Toolbar.setLayout(self.ToolbarLayout)
         self.ToolbarLayout.addWidget(self.addressbar)
+
+        # New tab button
+        self.AddTabButton = QPushButton("+")
+        self.AddTabButton.clicked.connect(self.AddTab)
+
+        self.ToolbarLayout.addWidget(self.AddTabButton)
 
         # set main view
         self.container = QWidget()
@@ -56,10 +67,22 @@ class App(QFrame):
         self.layout.addWidget(self.container)
         self.setLayout(self.layout)
 
+        self.AddTab()
+
         self.show()
 
     def CloseTab(self, i):
         self.tabbar.removeTab(i)
+
+    def AddTab(self):
+        i = self.tabCount
+        self.tabs.append(QWidget())
+        self.tabs[i].layout = QVBoxLayout()
+        self.tabs[i].setObjectName("tab" + str(i))
+
+        self.tabs[i].content = QtWebEngineView()
+        self.tabs[i].content.load(QUrl.fromUserInput("http://google.com"))
+
 
 
 if __name__ == "__main__":
