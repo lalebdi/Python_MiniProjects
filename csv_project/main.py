@@ -1,16 +1,17 @@
-# This is a sample Python script.
+import pandas
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
 
+gray_squirrels_count = len(data[data["Primary Fur Color"] == "Gray"])
+red_squirrels_count = len(data[data["Primary Fur Color"] == "Cinnamon"])
+black_squirrels_count = len(data[data["Primary Fur Color"] == "Black"])
+# print(gray_squirrels_count)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+data_dict = {
+    "Fur Color": ["Gray", "Red", "Black"],
+    "Count": [gray_squirrels_count, red_squirrels_count, black_squirrels_count]
+}
+# print(data_dict)
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+create = pandas.DataFrame(data_dict)
+create.to_csv("Colors Count.csv")
