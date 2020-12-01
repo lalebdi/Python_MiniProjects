@@ -55,9 +55,12 @@ canvas.grid(row=1, column=2)
 website_label = Label(text="Website:", font=("Arial", 16, "normal"))
 website_label.grid(row=2, column=1)
 
-website_input = Entry(width=35)
+website_input = Entry(width=21)
 website_input.focus()
-website_input.grid(row=2, column=2, columnspan=2)
+website_input.grid(row=2, column=2)
+
+search_button = Button(text="Search", command=save)
+search_button.grid(row=2, column=3)
 
 email_label = Label(text="Email/Username:", font=("Arial", 16, "normal"))
 email_label.grid(row=3, column=1)
