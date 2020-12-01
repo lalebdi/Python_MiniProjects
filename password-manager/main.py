@@ -14,19 +14,19 @@ logo_img = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_img)
 canvas.grid(row=1, column=2)
 
-website_label = Label(text="Website", font=("Arial", 24, "normal"))
+website_label = Label(text="Website:", font=("Arial", 16, "normal"))
 website_label.grid(row=2, column=1)
 
 website_input = Entry(width=35)
 website_input.grid(row=2, column=2, columnspan=2)
 
-email_label = Label(text="Email/Username", font=("Arial", 24, "normal"))
+email_label = Label(text="Email/Username:", font=("Arial", 16, "normal"))
 email_label.grid(row=3, column=1)
 
 email_input = Entry(width=35)
 email_input.grid(row=3, column=2, columnspan=2)
 
-password_label = Label(text="Password", font=("Arial", 24, "normal"))
+password_label = Label(text="Password:", font=("Arial", 16, "normal"))
 password_label.grid(row=4, column=1)
 
 password_input = Entry(width=21)
