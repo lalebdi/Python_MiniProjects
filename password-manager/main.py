@@ -7,7 +7,7 @@ from tkinter import *
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title("Password Manager")
-window.config(padx=20, pady=20)
+window.config(padx=50, pady=50)
 
 canvas = Canvas(height=200, width=200)
 logo_img = PhotoImage(file="logo.png")
@@ -18,6 +18,7 @@ website_label = Label(text="Website:", font=("Arial", 16, "normal"))
 website_label.grid(row=2, column=1)
 
 website_input = Entry(width=35)
+website_input.focus()
 website_input.grid(row=2, column=2, columnspan=2)
 
 email_label = Label(text="Email/Username:", font=("Arial", 16, "normal"))
@@ -25,6 +26,7 @@ email_label.grid(row=3, column=1)
 
 email_input = Entry(width=35)
 email_input.grid(row=3, column=2, columnspan=2)
+email_input.insert(0, "example@example.com")
 
 password_label = Label(text="Password:", font=("Arial", 16, "normal"))
 password_label.grid(row=4, column=1)
