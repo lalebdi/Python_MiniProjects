@@ -27,6 +27,7 @@ def generate_password():
 
 
 def save():
+
     website = website_input.get()
     email = email_input.get()
     password = password_input.get()
@@ -38,27 +39,38 @@ def save():
     }
 
     if len(website) == 0 or len(password) == 0:
-        messagebox.showinfo(title="Oops", message="Please make sure you haven't left any fields empty")
+        messagebox.showinfo(title="Oops", message="Please make sure you haven't left any fields empty.")
     else:
-        is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {email} \nPassword: {password} \n Is it ok to save?")
+        try:
+            with open("data.json", "r") as data_file:
+                #Reading old data
+                data = json.load(data_file)
+        except FileNotFoundError:
+            with open("data.json", "w") as data_file:
+                json.dump(new_data, data_file, indent=4)
+        else:
+            #Updating old data with new data
+            data.update(new_data)
 
-        if is_ok:
-            try:
-                with open("data.json", "r") as data_file:
-                    # Reading old data
-                    data = json.load(data_file)
-            except FileNotFoundError:
-                with open("data.json", "w") as data_file:
-                    json.dump(new_data, data_file, indent=4)
-            else:
-                # updating old data
-                data.update(new_data)
-                # saving updated data
-                with open("data.json", "w") as data_file:
-                    json.dump(new_data, data_file, indent=4)
-            finally:
-                website_input.delete(0, END)
-                password_input.delete(0, END)
+            with open("data.json", "w") as data_file:
+                #Saving updated data
+                json.dump(data, data_file, indent=4)
+        finally:
+            website_input.delete(0, END)
+            password_input.delete(0, END)
+
+
+# ---------------------------- Search Functionality ------------------------------- #
+
+
+def find_password():
+    website = website_input.get()
+    with open("data.json") as data_file:
+        data = json.load(data_file)
+        if website in data:
+            email = data[website]["email"]
+            password = data[website]["password"]
+            messagebox.showinfo(title=website, message=f"Email: {email} \nPassword: {password}")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -78,7 +90,7 @@ website_input = Entry(width=21)
 website_input.focus()
 website_input.grid(row=2, column=2)
 
-search_button = Button(text="Search", command=save)
+search_button = Button(text="Search", width=13, command=find_password)
 search_button.grid(row=2, column=3)
 
 email_label = Label(text="Email/Username:", font=("Arial", 16, "normal"))

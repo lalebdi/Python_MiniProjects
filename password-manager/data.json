@@ -1,6 +1,18 @@
 {
+    "hella": {
+        "email": "example@example.com",
+        "password": "*g1EMv9LJ)+m56&Lfa"
+    },
+    "Hella": {
+        "email": "example@example.com",
+        "password": "lvJMv(2!O&6CvI"
+    },
+    "boom": {
+        "email": "example@example.com",
+        "password": "z7p)NC63B(&JKI2&cU"
+    },
     "roasted": {
         "email": "example@example.com",
-        "password": "i7No4)TvHkd+kF"
+        "password": "08ntCnM*#8k5XT"
     }
 }
