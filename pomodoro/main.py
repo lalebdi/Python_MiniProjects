@@ -13,9 +13,29 @@ LONG_BREAK_MIN = 20
 # ---------------------------- TIMER RESET ------------------------------- # 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
+reps = 0
+
 
 def start_timer():
-    count_down(5 * 60)
+    global reps
+    reps += 1
+
+    work_sec = WORK_MIN * 60
+    short_break_sec = SHORT_BREAK_MIN * 60
+    long_break_sec = LONG_BREAK_MIN * 60
+
+    # if its the 8th rep:
+    if reps % 8:
+        count_down(long_break_sec)
+        title_label.config(text="Break", fg=RED)
+    # if its the 2nd/4th/6th rep:
+    elif reps % 2 == 0:
+        count_down(short_break_sec)
+        title_label.config(text="Break", fg=PINK)
+    # if it's the 1st/3rd/5th/7th rep:
+    else:
+        count_down(work_sec)
+        title_label.config(text="Work", fg=GREEN)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
@@ -30,7 +50,9 @@ def count_down(count):
 
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
     if count > 0:
-        window.after(1000, count_down, count -1)
+        window.after(1000, count_down, count - 1)
+    else:
+        start_timer()
 
 # ---------------------------- UI SETUP ------------------------------- #
 
