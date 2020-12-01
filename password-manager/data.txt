@@ -1,0 +1,3 @@
+hello | example@example.com | bye 
+yes | example@example.com | no 
+boom | example@example.com | roasted 
