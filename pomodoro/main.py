@@ -25,7 +25,7 @@ def start_timer():
     long_break_sec = LONG_BREAK_MIN * 60
 
     # if its the 8th rep:
-    if reps % 8:
+    if reps % 8 == 0:
         count_down(long_break_sec)
         title_label.config(text="Break", fg=RED)
     # if its the 2nd/4th/6th rep:
@@ -53,6 +53,10 @@ def count_down(count):
         window.after(1000, count_down, count - 1)
     else:
         start_timer()
+        mark = ""
+        for _ in range(math.floor(reps/2)):
+            mark += "✔"
+        check_marks.config(text=mark)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -77,7 +81,7 @@ start_button.grid(column=0, row=2)
 reset_button = Button(text="Reset", highlightthickness=0)
 reset_button.grid(column=2, row=2)
 
-check_marks = Label(text="✔", fg=GREEN, bg=YELLOW)
+check_marks = Label(fg=GREEN, bg=YELLOW)
 check_marks.grid(column=1, row=3)
 
 window.mainloop()
