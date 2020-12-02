@@ -33,3 +33,7 @@ if today_tuple in birthdays_dict:
             to_addrs=birthday_person["email"],
             msg=f"Subject:Happy Birthday!\n\n{contents}"
         )
+
+
+#  to host your python file in the cloud, go to pythonanywhere.com . Upload your main.py & the any related .csv . Then, go to consoles and start a new bash console. Type (pythin3 main.py).
+# if you run into a SMTPAuth error, copy the google support link at the bottom of the error message and click on the (I can't sign in to my email client). Click on the unlockCapcha link below and follow the steps.
