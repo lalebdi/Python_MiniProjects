@@ -40,15 +40,21 @@ day_before_yesterday_closing_price = day_before_yesterday_data["4. close"]
 # print(day_before_yesterday_closing_price)
 
 
-difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
+difference = float(yesterday_closing_price) - float(day_before_yesterday_closing_price)
 # print(difference)
+indicators = None
+if difference > 0:
+    indicators = "🔺"
+else:
+    indicators = "🔻"
 
 
-diff_percent = (difference / float(yesterday_closing_price)) * 100
+
+diff_percent = round((difference / float(yesterday_closing_price)) * 100)
 # print(diff_percent)
 
 # change the 0.5 in the if statement below
-if diff_percent >= 0.5:
+if abs(diff_percent) >= 0.5:
     # print("Get News")
     news_params = {
         "apiKey": NEWS_API_KEY,
@@ -60,7 +66,7 @@ if diff_percent >= 0.5:
     # print(articles)
     three_articles = articles[:3]
     # print(three_articles)
-    formatted_articles = [f"Headline: {article['title']} \nBrief: {article['description']}" for article in three_articles]
+    formatted_articles = [f"{STOCK_NAME}: {indicators}{diff_percent}%\n Headline: {article['title']} \nBrief: {article['description']}" for article in three_articles]
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
     for article in formatted_articles:
@@ -71,14 +77,4 @@ if diff_percent >= 0.5:
             to=PHONE
         )
 
-#Optional TODO: Format the message like this: 
-"""
-TSLA: 🔺2%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-or
-"TSLA: 🔻5%
-Headline: Were Hedge Funds Right About Piling Into Tesla Inc. (TSLA)?. 
-Brief: We at Insider Monkey have gone over 821 13F filings that hedge funds and prominent investors are required to file by the SEC The 13F filings show the funds' and investors' portfolio positions as of March 31st, near the height of the coronavirus market crash.
-"""
-
+        
