@@ -77,4 +77,3 @@ if abs(diff_percent) >= 0.5:
             to=PHONE
         )
 
-        
