@@ -12,6 +12,8 @@ STOCK_API_KEY = config.STOCK_API_KEY
 NEWS_API_KEY = config.NEWS_API_KEY
 TWILIO_SID = config.ACCOUNT_SID
 TWILIO_AUTH_TOKEN = config.AUTH_TOKEN
+VIRTUAL_NUMBER = config.VIRTUAL_NUMBER
+PHONE = config.PHONE
 
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 
@@ -30,20 +32,20 @@ data_list = [value for (key, value) in data.items()]
 # print(data_list)
 yesterday_data = data_list[0]
 yesterday_closing_price = yesterday_data["4. close"]
-print(yesterday_closing_price)
+# print(yesterday_closing_price)
 
 
 day_before_yesterday_data = data_list[1]
 day_before_yesterday_closing_price = day_before_yesterday_data["4. close"]
-print(day_before_yesterday_closing_price)
+# print(day_before_yesterday_closing_price)
 
 
 difference = abs(float(yesterday_closing_price) - float(day_before_yesterday_closing_price))
-print(difference)
+# print(difference)
 
 
 diff_percent = (difference / float(yesterday_closing_price)) * 100
-print(diff_percent)
+# print(diff_percent)
 
 # change the 0.5 in the if statement below
 if diff_percent >= 0.5:
@@ -61,9 +63,13 @@ if diff_percent >= 0.5:
     formatted_articles = [f"Headline: {article['title']} \nBrief: {article['description']}" for article in three_articles]
     client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
-#TODO 9. - Send each article as a separate message via Twilio. 
-
-
+    for article in formatted_articles:
+        print(article)
+        message = client.messages.create(
+            body=article,
+            from_=VIRTUAL_NUMBER,
+            to=PHONE
+        )
 
 #Optional TODO: Format the message like this: 
 """
