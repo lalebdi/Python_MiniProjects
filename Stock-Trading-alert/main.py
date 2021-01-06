@@ -52,11 +52,9 @@ if diff_percent >= 0.5:
     news_response = requests.get(NEWS_ENDPOINT, params=news_params)
     # print(news_response.json())
     articles = news_response.json()["articles"]
-    print(articles)
-
-
-
-#TODO 7. - Use Python slice operator to create a list that contains the first 3 articles. Hint: https://stackoverflow.com/questions/509211/understanding-slice-notation
+    # print(articles)
+    three_articles = articles[:3]
+    # print(three_articles)
 
 
     ## STEP 3: Use twilio.com/docs/sms/quickstart/python
