@@ -1,5 +1,6 @@
 import config
 import requests
+from twilio.rest import Client
 
 STOCK_NAME = "TSLA"
 COMPANY_NAME = "Tesla Inc"
@@ -9,6 +10,8 @@ NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
 
 STOCK_API_KEY = config.STOCK_API_KEY
 NEWS_API_KEY = config.NEWS_API_KEY
+TWILIO_SID = config.ACCOUNT_SID
+TWILIO_AUTH_TOKEN = config.AUTH_TOKEN
 
 # When stock price increase/decreases by 5% between yesterday and the day before yesterday then print("Get News").
 
@@ -56,6 +59,7 @@ if diff_percent >= 0.5:
     three_articles = articles[:3]
     # print(three_articles)
     formatted_articles = [f"Headline: {article['title']} \nBrief: {article['description']}" for article in three_articles]
+    client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
 #TODO 9. - Send each article as a separate message via Twilio. 
 
