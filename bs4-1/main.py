@@ -35,8 +35,24 @@ for article_tag in articles:
     link = article_tag.get("href")
     article_links.append(link)
 
-article_upvotes = [score.getText() for score in soup.find_all(name="span", class_="score")]
+# article_upvotes = [score.getText() for score in soup.find_all(name="span", class_="score")]
+article_upvotes = [int(score.getText().split()[0]) for score in soup.find_all(name="span", class_="score")]
 
 print(article_texts)
 print(article_links)
 print(article_upvotes)
+
+largest_number = max(article_upvotes)
+largest_index = article_upvotes.index(largest_number)
+
+print(article_texts[largest_index])
+print(article_links[largest_index])
+
+# sorted_upvotes = sorted(article_upvotes)
+# highest_score = sorted_upvotes[-1]
+# print(highest_score)
+# index_of_high = article_upvotes.index(highest_score)
+# print(index_of_high)
+# answer = [article_texts[index_of_high], article_links[index_of_high], article_upvotes[index_of_high]]
+# print(answer)
+
