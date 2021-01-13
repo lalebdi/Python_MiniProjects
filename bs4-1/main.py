@@ -27,3 +27,8 @@ all_anchor_tags = soup.find_all(name="a")
 # print(section_heading)
 
 # Using the CSS selectors
+company_url = soup.select_one(selector="p a")
+print(company_url)
+# to selecting with an ID use the '#' sign in the selector ot the '.'
+heading2 = soup.select(selector=".heading")
+print(heading2)
