@@ -13,11 +13,10 @@ l_name = driver.find_element_by_name("lName")
 l_name.send_keys("blah")
 
 email = driver.find_element_by_name("email")
-email.send_keys("google")
+email.send_keys("dude@google.com")
 
 
-search = driver.find_element_by_name("search")
-search.send_keys("Natasha")
-search.send_keys(Keys.ENTER)
+submit = driver.find_element_by_xpath('/html/body/form/button')
+submit.send_keys(Keys.ENTER)
 
 # driver.close()
