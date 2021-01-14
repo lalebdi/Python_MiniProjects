@@ -1,6 +1,6 @@
 from selenium import webdriver
 
-chrome_driver_path = "/Users//Dev/Python_MiniProjects/seleniumToDict/chromedriver"
+chrome_driver_path = "/Users/loaialebdi/Dev/Python_MiniProjects/seleniumToDict/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_driver_path)
 
 driver.get("https://www.python.org/")
