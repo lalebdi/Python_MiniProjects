@@ -6,9 +6,15 @@ driver = webdriver.Chrome(executable_path=chrome_driver_path)
 
 driver.get("http://secure-retreat-92358.herokuapp.com")
 
+f_name = driver.find_element_by_name("fName")
+f_name.send_keys("Natasha")
 
-all_portals = driver.find_element_by_link_text("All portals")
-# all_portals.click()
+l_name = driver.find_element_by_name("lName")
+l_name.send_keys("blah")
+
+email = driver.find_element_by_name("email")
+email.send_keys("google")
+
 
 search = driver.find_element_by_name("search")
 search.send_keys("Natasha")
